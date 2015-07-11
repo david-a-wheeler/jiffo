@@ -21,5 +21,6 @@ its internals; Jiffo's goal is to instead provide more functionality
 (even if that complicates things).
 We thank the Jaiffa developers!
 
-For more information, see the documentation, in particular the tutorial.
-You can also see the sample game included in this package.
+For more information, see the tutorial in file ./tutorial.md
+(the tutorial explains more about it and how to use it).
+You can also see the sample game ./catch-that-cat.html included in this package.
