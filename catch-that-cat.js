@@ -36,7 +36,7 @@ s.player.description =
 
 current(room(
 	"Living room",
-	"This is you one-room apartment in eastern Bucharest."));
+	"This is your one-room apartment in eastern Bucharest."));
 tv = thing("TV set", "Unfortunately, it's broken. Again.");
 thing("couch").$use = thing("couch").$sit_on =
 	"You rest on the couch for a few moments. Aah, comfy!";
