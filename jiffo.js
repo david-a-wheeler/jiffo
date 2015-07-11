@@ -1,4 +1,4 @@
-// Jaiffa - Javascript Interactive Fiction/Adventure system.
+// Jiffo - Javascript Interactive Fiction/Adventure system.
 // 2010-04-10 Felix Pleșoianu <felixp7@yahoo.com>
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,9 +22,9 @@
 // DSL functions.
 
 function story(name) {
-	jaiffa._STORY = new jaiffa.Story(name);
-	if (!jaiffa._REGISTRY[name]) {
-		jaiffa._REGISTRY[name] = {
+	jiffo._STORY = new jiffo.Story(name);
+	if (!jiffo._REGISTRY[name]) {
+		jiffo._REGISTRY[name] = {
 			ROOMS: {},
 			THINGS: {},
 			ACTORS: {},
@@ -32,81 +32,81 @@ function story(name) {
 			DOORS: {}
 		};
 	}
-	return jaiffa._STORY;
+	return jiffo._STORY;
 }
 
 function room(name, description) {
-	if (jaiffa._REGISTRY[jaiffa._STORY.title].ROOMS[name]) {
-		return jaiffa._REGISTRY[jaiffa._STORY.title].ROOMS[name];
+	if (jiffo._REGISTRY[jiffo._STORY.title].ROOMS[name]) {
+		return jiffo._REGISTRY[jiffo._STORY.title].ROOMS[name];
 	} else {
-		var new_room = new jaiffa.Room(name, description);
-		jaiffa._REGISTRY[jaiffa._STORY.title].ROOMS[name] = new_room;
-		if (jaiffa._STORY.first_room == null) {
-			jaiffa._STORY.first_room = new_room;
+		var new_room = new jiffo.Room(name, description);
+		jiffo._REGISTRY[jiffo._STORY.title].ROOMS[name] = new_room;
+		if (jiffo._STORY.first_room == null) {
+			jiffo._STORY.first_room = new_room;
 		}
 		return new_room;
 	}
 }
 
 function current(room) {
-	if (room instanceof jaiffa.Room) {
-		jaiffa._ROOM = room;
+	if (room instanceof jiffo.Room) {
+		jiffo._ROOM = room;
 	}
-	return jaiffa._ROOM;
+	return jiffo._ROOM;
 }
 
 function thing(name, description) {
-	if (jaiffa._REGISTRY[jaiffa._STORY.title].THINGS[name]) {
-		return jaiffa._REGISTRY[jaiffa._STORY.title].THINGS[name];
+	if (jiffo._REGISTRY[jiffo._STORY.title].THINGS[name]) {
+		return jiffo._REGISTRY[jiffo._STORY.title].THINGS[name];
 	} else {
-		var new_thing = new jaiffa.Thing(name, description);
-		jaiffa._REGISTRY[jaiffa._STORY.title].THINGS[name] = new_thing;
-		if (jaiffa._ROOM != null) new_thing.move(jaiffa._ROOM);
+		var new_thing = new jiffo.Thing(name, description);
+		jiffo._REGISTRY[jiffo._STORY.title].THINGS[name] = new_thing;
+		if (jiffo._ROOM != null) new_thing.move(jiffo._ROOM);
 		return new_thing;
 	}
 }
 
 function actor(name, description) {
-	if (jaiffa._REGISTRY[jaiffa._STORY.title].ACTORS[name]) {
-		return jaiffa._REGISTRY[jaiffa._STORY.title].ACTORS[name];
+	if (jiffo._REGISTRY[jiffo._STORY.title].ACTORS[name]) {
+		return jiffo._REGISTRY[jiffo._STORY.title].ACTORS[name];
 	} else {
-		var new_actor = new jaiffa.Actor(name, description);
-		jaiffa._REGISTRY[jaiffa._STORY.title].ACTORS[name] = new_actor;
-		if (jaiffa._ROOM != null) new_actor.move(jaiffa._ROOM);
+		var new_actor = new jiffo.Actor(name, description);
+		jiffo._REGISTRY[jiffo._STORY.title].ACTORS[name] = new_actor;
+		if (jiffo._ROOM != null) new_actor.move(jiffo._ROOM);
 		return new_actor;
 	}
 }
 
 function exit(name, description) {
-	if (jaiffa._REGISTRY[jaiffa._STORY.title].EXITS[name]) {
-		return jaiffa._REGISTRY[jaiffa._STORY.title].EXITS[name];
+	if (jiffo._REGISTRY[jiffo._STORY.title].EXITS[name]) {
+		return jiffo._REGISTRY[jiffo._STORY.title].EXITS[name];
 	} else {
-		var new_exit = new jaiffa.Exit(name, description);
-		jaiffa._REGISTRY[jaiffa._STORY.title].EXITS[name] = new_exit;
-		if (jaiffa._ROOM != null) new_exit.move(jaiffa._ROOM);
+		var new_exit = new jiffo.Exit(name, description);
+		jiffo._REGISTRY[jiffo._STORY.title].EXITS[name] = new_exit;
+		if (jiffo._ROOM != null) new_exit.move(jiffo._ROOM);
 		return new_exit;
 	}
 }
 
 function door(name, description) {
-	if (jaiffa._REGISTRY[jaiffa._STORY.title].DOORS[name]) {
-		return jaiffa._REGISTRY[jaiffa._STORY.title].DOORS[name];
+	if (jiffo._REGISTRY[jiffo._STORY.title].DOORS[name]) {
+		return jiffo._REGISTRY[jiffo._STORY.title].DOORS[name];
 	} else {
-		var new_door = new jaiffa.Door(name, description);
-		jaiffa._REGISTRY[jaiffa._STORY.title].DOORS[name] = new_door;
-		//if (jaiffa._ROOM != null) new_door.move(jaiffa._ROOM);
+		var new_door = new jiffo.Door(name, description);
+		jiffo._REGISTRY[jiffo._STORY.title].DOORS[name] = new_door;
+		//if (jiffo._ROOM != null) new_door.move(jiffo._ROOM);
 		return new_door;
 	}
 }
 
 function say(message) {
-	jaiffa.say(message);
+	jiffo.say(message);
 }
 
 
 // Engine objects.
 
-var jaiffa = {
+var jiffo = {
 	_STORY: null,
 	_ROOM: null,
 	_REGISTRY: {},
@@ -151,7 +151,7 @@ var jaiffa = {
 			if (typeof (target[before]) == "function") {
 				if (target[before](actor)) return true;
 			} else {
-				jaiffa.say(jaiffa.handle_value(target[before]));
+				jiffo.say(jiffo.handle_value(target[before]));
 				return true;
 			}
 		}
@@ -159,7 +159,7 @@ var jaiffa = {
 		if (typeof (target[action]) == "function") {
 			target[action](actor);
 		} else {
-			jaiffa.say(jaiffa.handle_value(target[action]));
+			jiffo.say(jiffo.handle_value(target[action]));
 		}
 
 		var after = "after" + action;
@@ -167,7 +167,7 @@ var jaiffa = {
 			if (typeof (target[after]) == "function") {
 				target[after](actor);
 			} else {
-				jaiffa.say(jaiffa.handle_value(target[after]));
+				jiffo.say(jiffo.handle_value(target[after]));
 			}
 		}
 
@@ -186,7 +186,7 @@ var jaiffa = {
 			return value();
 		} else if (typeof (value) == "object") {
 			if (value.constructor == Array) {
-				return jaiffa.random_pick(value);
+				return jiffo.random_pick(value);
 			} else {
 				return value.toString();
 			}
@@ -201,43 +201,43 @@ var jaiffa = {
 	}
 };
 
-jaiffa.Story = function (title) {
+jiffo.Story = function (title) {
 	this.title = title || "Untitled";
 	this.author = "Anonymous";
 	this.date = new Date(2010, 3, 10);
 	this.tagline = "A text adventure";
 	this.blurb = "";
 	this.about = "See also: help, credits.";
-	this.credits = "Based on the Jaiffa library by Felix Pleșoianu.";
+	this.credits = "Based on the Jiffo library by David A. Wheeler, which was based on the Jaiffa library by Felix Pleșoianu.";
 	
-	this.player = new jaiffa.Actor("yourself");
+	this.player = new jiffo.Actor("yourself");
 	this.player.altname("myself", "me");
 	this.first_room = null;
 };
 
-jaiffa.Story.prototype = {
+jiffo.Story.prototype = {
 	start: function () {
 		this.player.move(this.first_room);
 		this.turns = 0;
 		this.ended = false;
-		jaiffa.say(this.blurb);
-		jaiffa.say("<b>" + this.title + "</b><br>\n"
+		jiffo.say(this.blurb);
+		jiffo.say("<b>" + this.title + "</b><br>\n"
 			+ this.tagline + " by " + this.author + "<br>\n"
 			+ this.date.toString().split(" ").slice(0, 4).join(" ")
 			+ "<br>(first time players please type 'help')");
-		jaiffa.handle_action(this, "$look", this.player);
+		jiffo.handle_action(this, "$look", this.player);
 	},
 	
 	advance: function () {
 		if (this.ended) return;
 		
-		var actors = jaiffa._REGISTRY[this.title].ACTORS;
+		var actors = jiffo._REGISTRY[this.title].ACTORS;
 		for (var i in actors) actors[i].act();
 
 		var objects = this.player.scope();
 		for (var i = 0; i < objects.length; i++) {
 			if (objects[i] && objects[i].heremsg)
-				jaiffa.say(jaiffa.handle_value(
+				jiffo.say(jiffo.handle_value(
 					objects[i].heremsg));
 		}
 		
@@ -246,45 +246,45 @@ jaiffa.Story.prototype = {
 	
 	the_end: function (message) {
 		this.ended = true;
-		jaiffa.say("<b>*** " + message + " ***</b>");
+		jiffo.say("<b>*** " + message + " ***</b>");
 	},
 	
 	// Intransitive verbs.
 	$look: function (actor) {
-		jaiffa.handle_action(actor.location, "$examine", actor);
+		jiffo.handle_action(actor.location, "$examine", actor);
 	},
 	
 	$inventory: function (actor) {
-		jaiffa.say("You are carrying: " + jaiffa.list(actor.children));
+		jiffo.say("You are carrying: " + jiffo.list(actor.children));
 	},
 	
 	$wait: function (actor) {
-		jaiffa.say("You wait. Time passes.");
+		jiffo.say("You wait. Time passes.");
 	},
 	
 	$help: function (actor) {
-		jaiffa.say("Direct the game with one- to three-word commands.");
-		jaiffa.say("For example: 'look', 'pick up key', 'examine it',"
+		jiffo.say("Direct the game with one- to three-word commands.");
+		jiffo.say("For example: 'look', 'pick up key', 'examine it',"
 			+ " 'inventory', 'go north'. Some of these have"
 			+ " abbreviations: 'l', 't key', 'x', 'i', 'n'.");
-		jaiffa.say("But do try any other command that makes sense."
+		jiffo.say("But do try any other command that makes sense."
 			+ " E.g. many objects have an 'use' verb.");
-		jaiffa.say("See also: about, credits.");
+		jiffo.say("See also: about, credits.");
 	},
 	
 	$about: function (actor) {
-		jaiffa.say(jaiffa.handle_value(this.about));
+		jiffo.say(jiffo.handle_value(this.about));
 	},
 	
 	$credits: function (actor) {
-		jaiffa.say(jaiffa.handle_value(this.credits));
+		jiffo.say(jiffo.handle_value(this.credits));
 	}
 };
-jaiffa.Story.prototype.$l = jaiffa.Story.prototype.$look;
-jaiffa.Story.prototype.$i = jaiffa.Story.prototype.$inventory;
-jaiffa.Story.prototype.$inv = jaiffa.Story.prototype.$inventory;
+jiffo.Story.prototype.$l = jiffo.Story.prototype.$look;
+jiffo.Story.prototype.$i = jiffo.Story.prototype.$inventory;
+jiffo.Story.prototype.$inv = jiffo.Story.prototype.$inventory;
 
-jaiffa.ObjectMixin = function() {
+jiffo.ObjectMixin = function() {
 	this.toString = function () { return this.name; }
 	
 	// Divide object name into words for the benefit of the parser.
@@ -328,22 +328,22 @@ jaiffa.ObjectMixin = function() {
 
 	this.$examine = function (actor) {
 		if (!actor.location.dark) {
-			jaiffa.say(this.describe()
+			jiffo.say(this.describe()
 				|| "You see nothing special.");
 		} else {
-			jaiffa.say("It's too dark to see much.");
+			jiffo.say("It's too dark to see much.");
 		}
 	}
 	this.$ex = this.$x = this.$l = this.$look = this.$look_at =
 		function (actor) {
-			jaiffa.handle_action(this, "$examine", actor); }
+			jiffo.handle_action(this, "$examine", actor); }
 	
 	this.$search = "You find nothing worth mentioning.";
 	this.$look_in = function (actor) {
-		jaiffa.handle_action(this, "$search", actor); }
+		jiffo.handle_action(this, "$search", actor); }
 };
 
-jaiffa.ContainerMixin = function () {
+jiffo.ContainerMixin = function () {
 	this.addChild = function (object) {
 		if (!this.children) this.children = [];
 		for (var i = 0; i < this.children.length; i++)
@@ -373,7 +373,7 @@ jaiffa.ContainerMixin = function () {
 	}
 };
 
-jaiffa.ThingMixin = function() {
+jiffo.ThingMixin = function() {
 	this.move = function (container) {
 		if (this.location) this.location.removeChild(this);
 		if (container) container.addChild(this);
@@ -383,57 +383,57 @@ jaiffa.ThingMixin = function() {
 	
 	this.$take = function (actor) {
 		if (this.location == actor) {
-			jaiffa.say("You already have that.");
+			jiffo.say("You already have that.");
 		} else if (this.location != actor.location) {
-			jaiffa.say("I don't see that here.");
+			jiffo.say("I don't see that here.");
 		} else if (this.portable) {
 			this.move(actor);
-			jaiffa.say("Taken.");
+			jiffo.say("Taken.");
 		} else {
-			jaiffa.say("You can't.");
+			jiffo.say("You can't.");
 		}
 	}
 	this.$get = this.$grab = this.$pick_up = this.$t =
 		function (actor) {
-			jaiffa.handle_action(this, "$take", actor); }
+			jiffo.handle_action(this, "$take", actor); }
 	
 	this.$drop = function (actor) {
 		for (var i = 0; i < actor.children.length; i++) {
 			if (actor.children[i] == this) {
 				this.move(actor.location);
-				jaiffa.say("Dropped.");
+				jiffo.say("Dropped.");
 				return;
 			}
 		}
 		say("You don't have that.");
 	}
 	this.$throw = function (actor) {
-		jaiffa.handle_action(this, "$drop", actor);
+		jiffo.handle_action(this, "$drop", actor);
 	}
 }
 
-jaiffa.Room = function (name, description) {
+jiffo.Room = function (name, description) {
 	this.name = name;
 	this.description = description;
 	this.parse_name(this.name);
 	this.exits = [];
 };
-jaiffa.ObjectMixin.apply(jaiffa.Room.prototype);
-jaiffa.ContainerMixin.apply(jaiffa.Room.prototype);
-jaiffa.Room.prototype.$examine = function (actor) {
+jiffo.ObjectMixin.apply(jiffo.Room.prototype);
+jiffo.ContainerMixin.apply(jiffo.Room.prototype);
+jiffo.Room.prototype.$examine = function (actor) {
 	if (!actor.location.dark) {
-		jaiffa.say(actor.location.name + "<br>\n"
+		jiffo.say(actor.location.name + "<br>\n"
 			+ actor.location.describe());
-		jaiffa.say("You see: "
-			+ jaiffa.list(actor.location.children));
-		jaiffa.say("Obvious exits: "
-			+ jaiffa.list(actor.location.exits));
+		jiffo.say("You see: "
+			+ jiffo.list(actor.location.children));
+		jiffo.say("Obvious exits: "
+			+ jiffo.list(actor.location.exits));
 	} else {
-		jaiffa.say("It's dark, you can't see much at all.");
+		jiffo.say("It's dark, you can't see much at all.");
 	}
 }
 
-jaiffa.Exit = function (name, description) {
+jiffo.Exit = function (name, description) {
 	this.name = name;
 	this.description = description || "You see nothing special";
 	this.parse_name(this.name);
@@ -442,7 +442,7 @@ jaiffa.Exit = function (name, description) {
 		return this;
 	};
 }
-jaiffa.Exit.prototype = {
+jiffo.Exit.prototype = {
 	to: function (room) {
 		this.target = room;
 		return this;
@@ -456,37 +456,37 @@ jaiffa.Exit.prototype = {
 	$go: function (actor) {
 		if (this.door && this.door.locked) {
 			if (actor.has(this.door.key)) {
-				jaiffa.say("(first unlocking the door)");
+				jiffo.say("(first unlocking the door)");
 				this.door.locked = false;
 			} else {
-				jaiffa.say("It's locked"
+				jiffo.say("It's locked"
 					+ " and you don't have the key.");
 				return;
 			}
 		}
 		if (this.door && this.door.travelmsg) {
-			jaiffa.say(this.door.travelmsg);
+			jiffo.say(this.door.travelmsg);
 		} else if (this.travelmsg) {
-			jaiffa.say(this.travelmsg);
+			jiffo.say(this.travelmsg);
 		}
 		actor.move(this.target);
-		jaiffa.handle_action(actor.location, "$examine", actor);
+		jiffo.handle_action(actor.location, "$examine", actor);
 	},
 	
 	$lock: function (actor) {
 		if (this.door) {
 			if (actor.has(this.door.key)) {
 				if (this.locked) {
-					jaiffa.say("Already locked.");
+					jiffo.say("Already locked.");
 				} else {
-					jaiffa.say("You lock the door.");
+					jiffo.say("You lock the door.");
 					this.door.locked = true;
 				}
 			} else {
-				jaiffa.say("You don't have the key.");
+				jiffo.say("You don't have the key.");
 			}
 		} else {
-			jaiffa.say("There's nothing to lock");
+			jiffo.say("There's nothing to lock");
 		}
 	},
 	
@@ -494,39 +494,39 @@ jaiffa.Exit.prototype = {
 		if (this.door) {
 			if (actor.has(this.door.key)) {
 				if (!this.locked) {
-					jaiffa.say("Already unlocked.");
+					jiffo.say("Already unlocked.");
 				} else {
-					jaiffa.say("You unlock the door.");
+					jiffo.say("You unlock the door.");
 					this.door.locked = false;
 				}
 			} else {
-				jaiffa.say("You don't have the key.");
+				jiffo.say("You don't have the key.");
 			}
 		} else {
-			jaiffa.say("There's nothing to unlock");
+			jiffo.say("There's nothing to unlock");
 		}
 	},
 	
-	$open: function(actor) { jaiffa.say("No need."); },
-	$close: function(actor) { jaiffa.say("No need."); }
+	$open: function(actor) { jiffo.say("No need."); },
+	$close: function(actor) { jiffo.say("No need."); }
 };
-jaiffa.ObjectMixin.apply(jaiffa.Exit.prototype);
-jaiffa.ThingMixin.apply(jaiffa.Exit.prototype);
+jiffo.ObjectMixin.apply(jiffo.Exit.prototype);
+jiffo.ThingMixin.apply(jiffo.Exit.prototype);
 
-jaiffa.Door = function (name, description) {
+jiffo.Door = function (name, description) {
 	this.name = name;
 	this.description = description || "You see nothing special";
 };
-jaiffa.ObjectMixin.apply(jaiffa.Door.prototype);
-jaiffa.ThingMixin.apply(jaiffa.Door.prototype);
+jiffo.ObjectMixin.apply(jiffo.Door.prototype);
+jiffo.ThingMixin.apply(jiffo.Door.prototype);
 
-jaiffa.Actor = function (name, description) {
+jiffo.Actor = function (name, description) {
 	this.name = name;
 	this.parse_name(this.name);
 	this.description = description || "You see nothing special";
 	this.portable = true;
 }
-jaiffa.Actor.prototype = {
+jiffo.Actor.prototype = {
 	act: function () { },
 	
 	scope: function () {
@@ -538,48 +538,48 @@ jaiffa.Actor.prototype = {
 	},
 	
 	$talk_to: function (actor) {
-		jaiffa.say(this.name + " doesn't seem interested in talking.");
+		jiffo.say(this.name + " doesn't seem interested in talking.");
 	}
 }
-jaiffa.ObjectMixin.apply(jaiffa.Actor.prototype);
-jaiffa.ThingMixin.apply(jaiffa.Actor.prototype);
-jaiffa.ContainerMixin.apply(jaiffa.Actor.prototype);
+jiffo.ObjectMixin.apply(jiffo.Actor.prototype);
+jiffo.ThingMixin.apply(jiffo.Actor.prototype);
+jiffo.ContainerMixin.apply(jiffo.Actor.prototype);
 
-jaiffa.Thing = function (name, description) {
+jiffo.Thing = function (name, description) {
 	this.name = name;
 	this.description = description || "You see nothing special";
 	this.parse_name(this.name);
 }
-jaiffa.ObjectMixin.apply(jaiffa.Thing.prototype);
-jaiffa.ThingMixin.apply(jaiffa.Thing.prototype);
+jiffo.ObjectMixin.apply(jiffo.Thing.prototype);
+jiffo.ThingMixin.apply(jiffo.Thing.prototype);
 
-jaiffa.VerbObjectParser = function (story) {
+jiffo.VerbObjectParser = function (story) {
 	this.story = story;
 	this.it = undefined;
 }
 
-jaiffa.VerbObjectParser.prototype = {
+jiffo.VerbObjectParser.prototype = {
 	parse: function (command) {
-		jaiffa.say(this.story.turns + "> " + command);
+		jiffo.say(this.story.turns + "> " + command);
 		if (this.story.ended) {
-			jaiffa.say("Sorry, the story has ended.");
+			jiffo.say("Sorry, the story has ended.");
 			return;
 		}
 		var words = command.split(" ");
 		var player = this.story.player;
 		if (words.length == 0) {
-			jaiffa.say("I beg your pardon?");
+			jiffo.say("I beg your pardon?");
 		} else if (words.length == 1 || words.length > 3) {
 			var verb = words.join("_");
 			var action = "$" + verb;
-			if (jaiffa.handle_action(this.story, action, player))
+			if (jiffo.handle_action(this.story, action, player))
 				return;
 			else if (!this.handle_exit(verb, player))
 				say("I don't know how.");
 		} else if (words.length == 3) {
 			var verb = words.join("_");
 			var action = "$" + verb;
-			if (jaiffa.handle_action(this.story, action, player)) {
+			if (jiffo.handle_action(this.story, action, player)) {
 				return;
 			} else {
 				var verb = words[0] + "_" + words[1];
@@ -590,7 +590,7 @@ jaiffa.VerbObjectParser.prototype = {
 		} else if (words.length == 2) {
 			var verb = words.join("_");
 			var action = "$" + verb;
-			if (jaiffa.handle_action(this.story, action, player)) {
+			if (jiffo.handle_action(this.story, action, player)) {
 				return;
 			} else {
 				verb = words[0];
@@ -609,15 +609,15 @@ jaiffa.VerbObjectParser.prototype = {
 			return this.it;
 		} else {
 			var objects = this.story.player.scope();
-			return jaiffa.find_in_scope(objects, nouns[0]);
+			return jiffo.find_in_scope(objects, nouns[0]);
 		}
 	},
 	
 	handle_exit: function (word, actor) {
 		var exits = actor.location.exits;
-		var exit = jaiffa.find_in_scope(exits, word);
+		var exit = jiffo.find_in_scope(exits, word);
 		if (exit != null) {
-			jaiffa.handle_action(exit, "$go", actor);
+			jiffo.handle_action(exit, "$go", actor);
 			return true;
 		} else {
 			return false;
@@ -627,16 +627,16 @@ jaiffa.VerbObjectParser.prototype = {
 	handle_sentence: function (target, verb, actor) {
 		var action = "$" + verb;
 		if (target === undefined) {
-			jaiffa.say("I don't know what you mean by"
+			jiffo.say("I don't know what you mean by"
 				+ " 'it' right now.");
 		} else if (target === null) {
-			jaiffa.say("I don't see that here.");
+			jiffo.say("I don't see that here.");
 		} else if (target[action] == null) {
-			jaiffa.say("I don't know how to "
+			jiffo.say("I don't know how to "
 				+ verb + " the " + target + ".");
 			this.it = target;
 		} else {
-			jaiffa.handle_action(target, action, actor);
+			jiffo.handle_action(target, action, actor);
 			this.it = target;
 		}
 	}

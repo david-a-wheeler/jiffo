@@ -23,30 +23,30 @@
 	#input { Width: 88%; Height: 2em; }
 	#submit { Width: 10%; Height: 2em; }
   </style>
-  <script type="text/javascript" src="jaiffa.js"></script>
+  <script type="text/javascript" src="jiffo.js"></script>
   <script type="text/javascript" src="catch-that-cat.js"></script>
   <script type="text/javascript">
 	window.onload = function () {
-		var parser = new jaiffa.VerbObjectParser(jaiffa._STORY);
-		jaiffa._STORY.start();
-		jaiffa._STORY.advance();
+		var parser = new jiffo.VerbObjectParser(jiffo._STORY);
+		jiffo._STORY.start();
+		jiffo._STORY.advance();
 
-		for (var i = 0; i < jaiffa.output_buffer.length; i++)
+		for (var i = 0; i < jiffo.output_buffer.length; i++)
 			document.getElementById("output").innerHTML +=
-				"<p>" + jaiffa.output_buffer[i] + "</p>";
+				"<p>" + jiffo.output_buffer[i] + "</p>";
 		document.getElementById("output").lastChild
 			.scrollIntoView();
 		document.getElementById("output").scrollIntoView(false);
 
 		document.getElementById('input-form').onsubmit = function() {
-			jaiffa.output_buffer.length = 0;
+			jiffo.output_buffer.length = 0;
 			parser.parse(document.getElementById('input').value);
 			document.getElementById('input').value = "";
-			jaiffa._STORY.advance();
+			jiffo._STORY.advance();
 
-			for (var i = 0; i < jaiffa.output_buffer.length; i++)
+			for (var i = 0; i < jiffo.output_buffer.length; i++)
 				document.getElementById("output").innerHTML +=
-					"<p>" + jaiffa.output_buffer[i] + "</p>";
+					"<p>" + jiffo.output_buffer[i] + "</p>";
 			document.getElementById("output").lastChild
 				.scrollIntoView();
 			document.getElementById("output").scrollIntoView(false);

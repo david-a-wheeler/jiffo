@@ -1,4 +1,4 @@
-// Jaiffa - Javascript Interactive Fiction/Adventure system.
+// Demo of Jiffo (formerly for Jaiffa).
 // 2010-05-18 Felix Pleșoianu <felixp7@yahoo.com>
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
