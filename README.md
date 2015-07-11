@@ -22,4 +22,4 @@ its internals; Jiffo's goal is to instead provide more functionality
 We thank the Jaiffa developers!
 
 For more information, see the documentation, in particular the tutorial.
-You can also see the same game included in this package.
+You can also see the sample game included in this package.
