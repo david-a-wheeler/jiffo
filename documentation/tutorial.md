@@ -369,33 +369,56 @@ This makes it possible to have radical changes in the game, e.g.,
 if you change the default value, everything without a specific set value
 will use the new default value.
 
+You may note that in general Jiffo (and Jaiffa before it) uses a
+<a href="https://en.wikipedia.org/wiki/Fluent_interface">fluent interface</a>,
+in particular supporting chaining of methods.
+That makes development as easy as it can be in a language like Javascript.
+
+# Current capabilities
+
+Here are the current capabilities and design decisions:
+
+*    Doors can be locked, but not opened or closed. (Felix noted that it normally doesn't matter.)
+*   The containment model is simplistic: only rooms and actors can contain other objects. (And scope is pretty much always the same.)  That will be fixed so everything can be a container.
+*   There is no concept of a compass. Exits are arbitrary.
+*   Rooms are lit by default. (The opposite makes sense from a simulation perspective, but not from a game design perspective.)
+*   Objects and exits in a room are explicitly listed. No more guessing what is and isn't there, or relevant for that matter.  The plan is to make that selectable (so it can go either way).
+*   By default objects are not portable; that prevents a lot of bugs.
+*   The player's location is considered to be in scope.  That way commands such as 'clean kitchen' are easily implemented.
+*   There are no light sources.  For now, just flip the dark flag on rooms manually.
+*   Currently it uses a simple 2-word parser (this will be updated).
 
 # Future steps
 
 Jiffo is in a very early state.
+Here are some expected changes.
 
-Here are some expected changes:
+## Parser
 
 *   Add saving/loading.
-*   Improve the parser.  In the short term it needs to handle command + direct + indirect, e.g., "put X in Y".  In the long term it needs a full parsing system to support "get all but the X" and so on.
-*   Greatly improve the display (more spans + CSS)
+*   In the short term it needs to handle command + direct + indirect, e.g., "put X in Y".
+*   Easy "synonym" operation - easily make one word the "standard" word and redirect the others.  Then when you reset one, the others do the same thing.
+*   In the long term it needs a full parsing system to support "get all but the X" and so on.
+
+
+## World model and display
+
 *   Redo the world model.  I plan to change to an class model (not primarily mixins) with more classes, and the ability to easily create new subclasses.
 *   Much larger standard set of properties, verbs, etc.
 *   Add articles (a/an/the/some/your local...): display and parsing.
+*   Greatly improve the display (more spans + CSS)
 *   Improve generated list display.
-*   Easy "synonym" operation - easily make one word the "standard" word and redirect the others.  Then when you reset one, the others do the same thing.
+*   It should be designed for easy translation.
 
-There may significant changes in the API, as this is pre-1.0 software.
-That said, the goal is to make it *easy* to use, so any changes should
-make the software *more* pleasant to work with.
-Also, you never need to move up; you can always just copy the library
-into your directory and only move up when you want to.
+  
+## Versions of Javascript
 
 The ECMAscript standard version ES5 is widely deployed in modern
 browsers (except Internet Explorer).
 Thus, everything in ES5 can be used in the implementation.
 In 2015 version ES6 was released.  The plan is to slowly start using
 those functions where they make sense.
+For example, backquoted strings can make long descriptions easier to use.
 
 However, the "class" capabilities of ES6 will *not* be used.
 Javascript ES6's "class" system is designed to be fairly
@@ -408,8 +431,17 @@ Here are some examples of why "class" will not be used:
 -   A class body can only contain methods, not data properties.  The ability to include data properties is really useful for making mass environment/rule changes, a capability useful in IF games.
 -   A constructor must be called with "new"; you can't call the constructor without "new", and thus can't use it to look up existing instances.
 
-The reference to Montfort above it
-Montfort, Nick & Urbano, Paulo (Tr.). A quarta Era da Ficção Interactiva. Nada, Volume 8. October 2006.
+## Other potential changes
+
+There may significant changes in the API, as this is pre-1.0 software.
+That said, the goal is to make it *easy* to use, so any changes should
+make the software *more* pleasant to work with.
+Also, you never need to move up; you can always just copy the library
+into your directory and only move up when you want to.
 
 Patches welcome.
+
+# Bibliography
+
+Montfort, Nick & Urbano, Paulo (Tr.). A quarta Era da Ficção Interactiva. Nada, Volume 8. October 2006.
 
