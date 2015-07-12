@@ -16,11 +16,10 @@ documentation, and so on for Javascript.
 Jiffo is derived from Jaiffa
 (the Javascript Interactive Fiction/Adventure system) by
 Felix Ple&#537;oianu.
-However, Jaiffa emphasizes being small, simple, and easy to understand
-its internals; Jiffo's goal is to instead provide more functionality
-(even if that complicates things).
-We thank the Jaiffa developers!
+However, Jaiffa emphasizes being very small;
+Jiffo's goal is to provide functionality.
 
-For more information, see the tutorial in file ./tutorial.md
+For more information, see the tutorial in file [tutorial.md](./tutorial.md)
 (the tutorial explains more about it and how to use it).
-You can also see the sample game ./catch-that-cat.html included in this package.
+You can also see the sample game [catch that cat](./catch-that-cat.html)
+included in this package.
