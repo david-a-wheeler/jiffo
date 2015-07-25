@@ -5,65 +5,54 @@
 
 "Jiffo" is a framework for creating parser-based interactive fiction (IF)
 that is open source software (OSS) and built on Javascript.
-If you want to create interactive fiction, you may have found what you want!
+If you want to create IF, you may have found what you want!
 But first, let's define those key terms:
 
-*   Parser-based interactive fiction is "software simulating an environment in which players use text commands to control characters and influence the environment." per Montfort.  From here on we'll use the words "story" and "game" interchangeably.  Unlike a choose your own adventure (CYOA) system, Jiffo has built-in mechanisms to simulate and track the state of the world (e.g., object placement and inventory).
-*   Open source software (OSS) is software where users have the freedom to run, copy, (re)distribute, study, change and improve the software for any purpose and without royalty payments.  Another term for OSS (for our purposes) is Free software, but while it's no-cost, it's more than that... it provides many freedoms. Jiffo is released under the MIT license.
-*   Javascript is the language implemented by all major web browsers and defined by the formal "ECMAscript" standard.
+*   Parser-based interactive fiction (IF) is "software simulating an environment in which players use text commands to control characters and influence the environment." per Montfort.  The software is called the "story" or "game".  These are diffferent from choose your own adventure (CYOA) systems, because these games can simulate an environment (e.g., where objects are placed).
+*   Open source software (OSS) is software where users have the freedom to run, copy, (re)distribute, study, change and improve the software for any purpose and without royalty payments.  Jiffo is released under the MIT license.
+*   Javascript is the widely-used language implemented by all major web browsers and defined by the formal "ECMAscript" standard.
 
 A key advantage of Jiffo is that it's OSS.
-Most IF development systems are *not* OSS; non-OSS systems include
-Inform 7, TADS (2 or 3), ADRIFT, and JIFFEE.
+Most IF development systems are *not* OSS; non-OSS systems for IF include
+Inform 7, TADS (2 or 3), ADRIFT, and JIFFEE
+(at least at the time of this writing).
 In a non-OSS system you have a risk that the original developers will
 stop maintaining it (a big risk if the software is developed as a hobby)
 or develop it in a direction you don't want (since you can't go
 a different way).
 Only Inform 6 is a widely-used IF development system.
 
-Another key advantage of Jiffo stems from its use of Javascript.
-Most IF stories are been developed
-for specialized pseudo-machine formats such as Z-code
+Another key advantage of Jiffo stems from Javascript.
+Most IF stories are developed
+for specialized formats such as Z-code
 (originally developed by Infocom) or Glulx.
-This helps users avoid security problems, and lets people run games
-even as computing systems change and update.
-However, this requires that the user find a program that can simulate
-these pseudo-machines.
-One solution is to use a program like Parchment
-that implements these older formats through Javascript,
-but while that helps, it creates an extra layer of complexity and
-it is difficult to access
-the additional capabilities available to Javascript.
+However, this requires that the user find a program for these formats.
+Programs like Parchment implement these older formats through Javascript,
+but that creates an extra layer of complexity.
 Also, most IF programming languages are only known
 to a few IF developers; relatively few people can work to improve
 Inform 7 or TADS.
-All of this was necessary at one time, but things have changed.
-We now have a single language (Javascript) that can be easily sent between
-systems and executed on a variety of them.
-Thus, we instead use Javascript directly.
+All of this is unnecessary today.
+We now have a single language (Javascript) that can be securely and portably
+executed on a variety of systems.
 By using Javascript directly, IF developers can immediately have
-access to all the capabilities of Javascript.
+access to all the capabilities and libraries of Javascript.
 The documentation and help for millions of Javascript developers becomes
 immediately useful, and developers
 can build on a widely-used and supported standard.
+Some people write IF as a way to learn how to program; in that case,
+it makes more sense to learn to use a language you can directly use for
+other purposes.
 Players can use the IF in a much
 easier way (they can just view a page with their web browser!).
-Javascript is designed to be easy to get started, and is extremely
-dynamic, making it a good language for IF.
+Javascript is designed to be easy to get started, and because it is extremely
+dynamic it can be a good language for IF.
 
-Of course, Jiffo is not for everyone.
-Jiffo is a very new system, so it lacks a large number of
-capabilities and conveniences that older systems include by default.
-That said, since it's OSS and in standard Javascript, it's easy to
-add those things, and we hope that people will contribute improvements
-to give it similar capabilities.
-To create an IF story in Jiffo you'll directly use Javascript;
-if you instead want to use a programming language
-that looks like a Natural Language, another
-tool like Inform 7 would be a better fit.
-If you're trying to create a 3D graphical game,
-Jiffo is probably not the right framework.
-But for many IF developers, Jiffo may be what you're looking for.
+For many IF developers, Jiffo may be what you're looking for.  That said, Jiffo is not for everyone:
+
+*   Jiffo is a very new system, so it lacks a large number of capabilities and conveniences that older systems include by default.  That said, since it's OSS and in standard Javascript, it's easy to add those things, and we hope that people will contribute improvements to give it similar capabilities.
+*   Jiffo uses Javascript directly.  If you instead want to use a programming language that looks like a Natural Language, another tool like Inform 7 would be a better fit.
+*   Jiffo is intended for creating parser-based interactive fiction (IF).  If you're trying to create something else, such as a 3D graphical game, Jiffo is probably not the right framework.
 
 Jiffo is derived from Jaiffa
 (the Javascript Interactive Fiction/Adventure system) by
