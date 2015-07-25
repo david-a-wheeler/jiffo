@@ -8,7 +8,7 @@ that is open source software (OSS) and built on Javascript.
 If you want to create interactive fiction, you may have found what you want!
 But first, let's define those key terms:
 
-*   Parser-based interactive fiction is a story or game where users see text and images (like a book) and can type in text commands.  They may be able to click on things to enter their commands, but they don't need to be limited to that.  Another definition is that it's "software simulating an environment in which players use text commands to control characters and influence the environment.  Works in this form can be understood as literary narratives and as video games" per Montfort.  From here on we'll use the words "story" and "game" interchangeably.  Unlike a choose your own adventure (CYOA) system, Jiffo has built-in mechanisms to track the state of the world (e.g., inventory).
+*   Parser-based interactive fiction is "software simulating an environment in which players use text commands to control characters and influence the environment." per Montfort.  From here on we'll use the words "story" and "game" interchangeably.  Unlike a choose your own adventure (CYOA) system, Jiffo has built-in mechanisms to simulate and track the state of the world (e.g., object placement and inventory).
 *   Open source software (OSS) is software where users have the freedom to run, copy, (re)distribute, study, change and improve the software for any purpose and without royalty payments.  Another term for OSS (for our purposes) is Free software, but while it's no-cost, it's more than that... it provides many freedoms. Jiffo is released under the MIT license.
 *   Javascript is the language implemented by all major web browsers and defined by the formal "ECMAscript" standard.
 
