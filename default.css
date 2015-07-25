@@ -1,0 +1,18 @@
+body {
+	Margin: 0; Padding: 0;
+	Background-color: white;
+	Color: black;
+}
+#output {
+	Width: 100%; Height: 100%;
+	Padding-bottom: 2em;
+	Overflow: auto;
+}
+#input-form {
+	Position: fixed;
+	Left: 0; Bottom: 0;
+	Width: 100%; Height: 2em;
+}
+#input { Width: 88%; Height: 2em; }
+#submit { Width: 10%; Height: 2em; }
+
