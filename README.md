@@ -12,7 +12,6 @@ restrictions on reuse or modification.
 Since it's in Javascript you can easily and directly use all of
 Javascript's capabilities, libraries, and so on.
 
-For more information, see the tutorial in file [tutorial.md](./tutorial.md)
-(the tutorial explains more about it and how to use it).
-You can also see the sample game [catch that cat](./catch-that-cat.html)
-included in this package.
+For more information, see the tutorial in file [tutorial.md](./tutorial.md).
+You can also see the sample game
+[catch that cat](https://htmlpreview.github.io/?https://github.com/david-a-wheeler/jiffo/blob/master/catch-that-cat.html).
