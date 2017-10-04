@@ -343,7 +343,7 @@ neighbor.heremsg = [
 neighbor.react_after = function (actor, action, target) {
 	if (action == "$examine" && target == thing("toolkit")) {
 		say('Mr. Petrescu beams. "Like my new toolkit, neighbor?"');
-	} else if (action == "$go" && target == exit("Corner shop")) {
+	} else if (action == "$go" && target == exit("Corner store")) {
 		say('Mr. Petrescu says,'
 			+ ' "Hello, neighbor. Can I get you anything?"');
 	}
@@ -359,7 +359,7 @@ exit("Out of the shop").altname("outside", "o", "exit", "leave")
 	.to(room("Outside your apartment building"));
 
 bottle.after$drop = function (actor) {
-	if (this.location == room("Corner shop")) {
+	if (this.location == room("Corner store")) {
 		this.move(null);
 		say('You put the bottle on the counter.'
 			+ ' "I believe you wanted this back?"');
@@ -368,7 +368,7 @@ bottle.after$drop = function (actor) {
 	}
 }
 thing("beer crate").after$drop = function (actor) {
-	if (this.location == room("Corner shop")) {
+	if (this.location == room("Corner store")) {
 		this.move(null);
 		say('You carefully set the crate down by the counter.'
 			+ ' "I believe you wanted this back?"');
